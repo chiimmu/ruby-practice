@@ -7,24 +7,27 @@ def janken
     user = gets.chomp
     puts "CPU #{cpu}"
     puts "あなた #{user}"
-  
+    
     if user == cpu
-      puts = "あいこで"
       return true
     elsif (user == "g" && cpu == "c") || (user == "c" && cpu == "p") || (user == "p" && cpu == "g")
       puts "あなたの勝ちです"
       @result[0] += 1
       puts "#{@result[0]}勝#{@result[1]}敗"
       return false
-    else
+    elsif (user == "c" && cpu == "g") || (user == "p" && cpu == "c") || (user == "g" && cpu == "p")
       puts "あなたの負けです"
       @result[1] += 1
       puts "#{@result[0]}勝#{@result[1]}敗"      
-      return false 
-　  end
-  end
+      return false
+    end
+    unless (user == "g") || (user == "c") || (user == "p")
+      puts "値が無効です(g, c, p のいずれかを選択してください)"
+      return true
+    end
+
+  end  
   next_game = true
-  puts "あいこで"
   while next_game do
     next_game = game
   end
@@ -63,7 +66,4 @@ when "5"
   else
     puts "#{@result[0]}勝#{@result[1]}敗であなたの負け"
   end
-else 
-  puts "値が無効です、次の中から選択してくださ中から選択してください(1 or 3 or 5)"
 end
-
