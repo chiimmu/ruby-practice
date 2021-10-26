@@ -9,6 +9,7 @@ def janken
     puts "あなた #{user}"
     
     if user == cpu
+      puts "あいこです"
       return true
     elsif (user == "g" && cpu == "c") || (user == "c" && cpu == "p") || (user == "p" && cpu == "g")
       puts "あなたの勝ちです"
